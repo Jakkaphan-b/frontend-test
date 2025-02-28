@@ -108,17 +108,31 @@ const onEdit = (id) => router.push("/updateUser/" + id);
 
 // ยืนยันการลบ
 const confirmDelete = (id) => {
+  if (!$q || !$q.dialog) {
+    console.error("❌ Quasar Dialog ไม่สามารถใช้งานได้");
+    return;
+  }
+
+  console.log("🛑 กำลังพยายามลบผู้ใช้:", id); // ตรวจสอบค่า ID ที่กดลบ
+
   $q.dialog({
     title: "⚠️ ยืนยันการลบ",
     message: "คุณต้องการลบผู้ใช้นี้หรือไม่?",
-    cancel: true,
-    persistent: true,
+    ok: "ลบ",
+    cancel: "ยกเลิก",
+    persistent: true
   }).onOk(() => onDelete(id));
 };
+
 
 // ลบผู้ใช้
 const onDelete = async (id) => {
   console.log("🔍 กำลังลบ ID:", id); // ตรวจสอบค่า ID ที่ส่งไป API
+
+  if (!$q || !$q.notify) {
+    console.error("❌ Quasar Notify ไม่สามารถใช้งานได้");
+    return;
+  }
 
   try {
     const res = await fetch(`http://localhost:8000/users/${id}`, { method: "DELETE" });
@@ -137,6 +151,7 @@ const onDelete = async (id) => {
     $q.notify({ type: "negative", message: "เกิดข้อผิดพลาดในการลบผู้ใช้" });
   }
 };
+
 
 </script>
 
