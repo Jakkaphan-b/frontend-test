@@ -194,4 +194,12 @@ const onDelete = async (id) => {
 .q-btn:active {
   transform: scale(0.95);
 }
+
+.filter-select .q-field__label, .sort-select .q-field__label {
+  color: #000000; /* สีเข้ม */
+}
+
+.filter-select .q-field__control, .sort-select .q-field__control {
+  color: #000000; /* สีเข้ม */
+}
 </style>
