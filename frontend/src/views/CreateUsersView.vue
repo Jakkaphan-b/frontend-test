@@ -110,7 +110,7 @@
   
       if (res.ok) {
         $q.notify({ type: "positive", message: "เพิ่มผู้ใช้สำเร็จ!" });
-        router.push("/");
+        router.push("/users");
       } else {
         throw new Error(result.message || "เกิดข้อผิดพลาด");
       }

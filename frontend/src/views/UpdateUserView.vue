@@ -124,7 +124,7 @@
   
       if (res.ok) {
         $q.notify({ type: "positive", message: "อัปเดตข้อมูลสำเร็จ!" });
-        router.push("/");
+        router.push("/users");
       } else {
         throw new Error(result.message || "เกิดข้อผิดพลาด");
       }
